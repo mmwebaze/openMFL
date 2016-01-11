@@ -21,5 +21,7 @@ public class OrganisationUnitService {
 	public List<OrganisationUnit> getOrganisationUnits(){
 		return organisationUnitDao.getOrganisationUnits();
 	}
-
+	public List<OrganisationUnit> getOrganisationUnitsByLevel(int level) {
+		return organisationUnitDao.getOrganisationUnitsByLevel(level);
+	}
 }

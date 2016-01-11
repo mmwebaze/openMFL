@@ -8,5 +8,5 @@ public interface OrganisationUnitDAO {
 	
 	public void addOrganistionUnit(OrganisationUnit organisationUnit);
 	public List<OrganisationUnit> getOrganisationUnits();
-
+	public List<OrganisationUnit> getOrganisationUnitsByLevel(int level);
 }
