@@ -113,7 +113,7 @@ public class OrganisationUnitDaoImpl extends DataAccessConfig implements Organis
 	@Override
 	public List<OrganisationUnit> searchForOrganisationUnits(String search) {
 		
-		TypedQuery<OrganisationUnit> typedQuery = entityManager.createQuery("SELECT NEW org.jsi.mfl.api.domain.organisationunit.OrganisationUnit(o.id, o.uuid, o.organisationUnitName, o.organisationUnitCode) from OrganisationUnit o where organisationunitcode  LIKE :searchTerm OR organisationunitname LIKE :searchTerm", OrganisationUnit.class);
+		TypedQuery<OrganisationUnit> typedQuery = entityManager.createQuery("SELECT NEW org.jsi.mfl.api.domain.organisationunit.OrganisationUnit(o.id, o.uuid, o.organisationUnitName, o.organisationUnitCode,o.operationalStatus, p.ownerName) from OrganisationUnit o LEFT JOIN o.orgUnitOwner p where organisationunitcode  LIKE :searchTerm OR organisationunitname LIKE :searchTerm", OrganisationUnit.class);
 		List<OrganisationUnit> orgUnits = typedQuery.setParameter("searchTerm", search).getResultList();
 		
 		return orgUnits;
