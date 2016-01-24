@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1" />
+<meta charset="utf-8" />
+<!-- Mobile-friendly viewport -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>MFL</title>
+<link rel="stylesheet" href="../static/css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<script type="text/javascript" src="../static/js/jquery-1.11.3.min.js"
+	th:src="@{js/jquery-1.11.3.min.js}"></script>
+<script type="text/javascript" src="../static/js/bootstrap.min.js"
+	th:src="@{js/bootstrap.min.js}"></script>
+<script type="text/javascript" src="../static/js/mfl-util.js"
+	th:src="@{js/mfl-util.js}"></script>
+</head>
+<body ng-app="mfl">
+	<div th:replace="menu :: menu"></div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-2">
+				<ul id="sidebar" class="nav nav-stacked affix">
+					<li><a href="#">The Next Web</a></li>
+					<li><a href="#">Mashable</a></li>
+					<li><a href="#">TechCrunch</a></li>
+					<li><a href="#">GitHub</a></li>
+					<li><a href="#">In1</a></li>
+					<li><a href="#">TechMeMe</a></li>
+				</ul>
+			</div>
+			<div class="col-sm-10">
+				<form class="form-horizontal" action="#"
+					th:action="@{/submitOrgUnitLevel}" th:object="${orgUnitLevel}"
+					method="post">
+					<div class="form-group">
+						<label for="orgUnitLevelCode" class="control-label col-xs-2">Org
+							Unit Code:</label>
+						<div class="col-xs-10">
+							<input type="text" th:field="*{code}" class="form-control"
+								id="orgUnitLevelCodeID"
+								placeholder="Organisation Unit Level Code" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="orgUnitLevelName" class="control-label col-xs-2">Org
+							Unit Level Name:</label>
+						<div class="col-xs-10">
+							<input type="text" th:field="*{name}" class="form-control"
+								id="orgUnitLevelNameID"
+								placeholder="Organisation Unit Level Name" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="orgUnitLevel" class="control-label col-xs-2">Org
+							Unit Level Number:</label>
+						<div class="col-xs-10">
+							<input type="text" th:field="*{level}" class="form-control"
+								id="orgUnitLevelID" placeholder="Organisation Unit Level Number" />
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-xs-offset-2 col-xs-10">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript" src="../static/js/angular.min.js"
+		th:href="@{js/angular.min.js}"></script>
+	<script type="text/javascript" src="../static/js/app.js"
+		th:href="@{js/app.js}"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="" />
+<meta name="author" content="" />
+<!-- <link rel="icon" href="../../favicon.ico"/> -->
+
+<title>Dashboard Template for Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="../static/css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+<link rel="stylesheet" href="../static/css/chosen.min.css"
+	th:href="@{css/chosen.min.css}" />
+
+<!-- Custom styles for this template -->
+<link rel="stylesheet" href="../static/css/custom/template.css"
+	th:href="@{css/custom/template.css}" />
+
+</head>
+
+<body>
+	<div th:replace="menu :: menu"></div>
+	<div class="container-fluid">
+		<div class="row">
+			<div th:replace="menu3 :: menu3"></div>
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+				<form class="form-horizontal" th:action="@{/submitOrgUnit}"
+					th:object="${orgUnit}" method="post" id="addOrgUnitFormID">
+					<div class="form-group">
+						<label for="OrganisationUnitLevel" class="control-label col-xs-2">Organistaion
+							Level</label>
+						<div class="col-xs-10">
+							<!-- <input type="text" th:field="*{organisationUnitLevel.level}"
+								class="form-control" name="orgUnitLevelId"
+								placeholder="Organisation Unit Level" disabled="disabled" /> -->
+							<select id="levelId" th:field="*{organisationUnitLevel.id}"
+								name="orgUnitLevelDropdown">
+								<option th:each="orgUnitLevel : ${orgUnitLevels}"
+									th:value="${orgUnitLevel.id}" th:text="${orgUnitLevel.name}"></option>
+							</select>
+						</div>
+					</div>
+					
+					<div class="form-group">
+						<label for="OrganisationUnitParent" class="control-label col-xs-2">OU
+							Parent</label>
+						<div class="col-xs-10">
+							<select id="unitId" th:field="*{idParent}">
+								<option th:each="unit : ${levelTwoOrgUnits}"
+									th:value="${unit.id}" th:text="${unit.organisationUnitName}"></option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="OrganisationUnitOwner" class="control-label col-xs-2">Owner</label>
+						<div class="col-xs-10">
+							<select id="ownerId" th:field="*{orgUnitOwner.id}">
+								<option th:each="owner : ${owners}"
+									th:value="${owner.id}" th:text="${owner.ownerName}"></option>
+							</select>
+						</div>
+					</div>
+					<!-- <div class="form-group">
+						<label for="OrganisationUnitParent" class="control-label col-xs-2">Organistaion
+							Parent</label>
+						<div class="col-xs-10">
+							<input type="text" th:field="*{organisationUnitLevel.level}" class="form-control" id="organisationUnitLevel"
+						placeholder="Organisation Unit Level"/>
+							<select id="organisationUnitParentID" class="chosen-select"
+								th:field="*{idParent}">
+								<option th:each="orgUnit : ${orgUnits}"
+									th:value="${orgUnit.id}"
+									th:text="${orgUnit.organisationUnitName}"></option>
+							</select>
+						</div>
+					</div> -->
+
+					<div class="form-group">
+						<label for="OrganisationUnitType" class="control-label col-xs-2">Facility
+							Type</label>
+						<div class="col-xs-10">
+							<select id="organisationUnitTypeID" th:field="*{orgUnitType.id}">
+								<option th:each="orgUnitType : ${orgUnitTypes}"
+									th:value="${orgUnitType.id}" th:text="${orgUnitType.typeName}"></option>
+							</select>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="code" class="control-label col-xs-2">Code</label>
+						<div class="col-xs-10">
+							<input type="text" th:field="*{organisationUnitCode}"
+								class="form-control" name="orgUnitCode"
+								placeholder="Facility Code" required="true" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="organistaionUnitName" class="control-label col-xs-2">Organistaion
+							Unit Name</label>
+						<div class="col-xs-10">
+							<input type="text" th:field="*{organisationUnitName}"
+								class="form-control" name="orgUnitName"
+								placeholder="Facility Name" required="true" />
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="col-xs-offset-2 col-xs-10">
+							<div class="checkbox">
+								<label><input type="checkbox"
+									th:field="*{operationalStatus}" name="isOperational" />
+									Operational Status</label>
+							</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="servicesAvailabe" class="control-label col-xs-2">Select
+							Services</label>
+						<div class="col-xs-10">
+							<select id="servicesAvailableID" th:field="*{orgUnitServices}"
+								multiple="multiple">
+								<option
+									th:each="serviceType, iterationStatus : ${servicesTypes}"
+									th:value="${{serviceType}}" th:text="${serviceType.name}"></option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<div class="col-xs-offset-2 col-xs-10">
+							<button type="submit" class="btn btn-primary">Submit</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script type="text/javascript" src="../static/js/jquery-1.11.3.min.js"
+		th:src="@{js/jquery-1.11.3.min.js}"></script>
+	<script type="text/javascript" src="../static/js/bootstrap.min.js"
+		th:src="@{js/bootstrap.min.js}"></script>
+	<script type="text/javascript" src="../static/js/chosen.jquery.min.js"
+		th:src="@{js/chosen.jquery.min.js}"></script>
+	<script type="text/javascript" src="../static/js/mfl-util.js"
+		th:src="@{js/mfl-util.js}"></script>
+
+	<script type="text/javascript"
+		src="../static/js/custom/organisationUnit.js"
+		th:src="@{js/custom/organisationUnit.js}"></script>
+</body>
+</html>

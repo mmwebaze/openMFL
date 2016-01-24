@@ -1,33 +1,56 @@
 package org.jsi.mfl.api.domain.organisationunit;
 
-import java.util.UUID;
+import java.util.ArrayList;
+import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
 @Entity
-@Table(name="organisationunit_level", uniqueConstraints = {@UniqueConstraint(columnNames = {"level","name","uuid","code"})})
+@Table(name="orgunitlevel", uniqueConstraints = {@UniqueConstraint(columnNames = {"level","name","uuid","code"})})
+
 public class OrganisationUnitLevel {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
-	@Column(nullable=false)
+	//@Column(nullable=false)
 	private int level;
-	@Column(nullable=false)
+	//@Column(nullable=false)
 	private String name;
 	@Column(nullable=false)
 	private String uuid;
-	@Column(nullable=true)
-	private String code;
+	//@Column(nullable=true)
 	
+	private String code;
+	public OrganisationUnitLevel(int id) {
+		super();
+		this.id = id;
+	}
+	public OrganisationUnitLevel(int id, String uuid, String name){
+		this.id = id;
+		this.uuid = uuid;
+		this.name = name;
+	}
 	public OrganisationUnitLevel(){
-		this.uuid = UUID.randomUUID().toString();
+		//this.uuid = UUID.randomUUID().toString();
+	}
+	@OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.ALL}, mappedBy="organisationUnitLevel")
+	private Collection<OrganisationUnit> organisationUnit = new ArrayList<OrganisationUnit>();
+	
+	public Collection<OrganisationUnit> getOrganisationUnit() {
+		return organisationUnit;
+	}
+	public void setOrganisationUnit(Collection<OrganisationUnit> organisationUnit) {
+		this.organisationUnit = organisationUnit;
 	}
 	public int getId() {
 		return id;
@@ -61,7 +84,8 @@ public class OrganisationUnitLevel {
 	}
 	@Override
 	public String toString() {
-		return "OrganisationUnitLevel [level=" + level + ", name=" + name
-				+ ", uuid=" + uuid + ", code=" + code + "]";
+		return "OrganisationUnitLevel [id=" + id + ", level=" + level
+				+ ", name=" + name + ", uuid=" + uuid + ", code=" + code + "]";
 	}
+	
 }

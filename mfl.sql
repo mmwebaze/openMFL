@@ -1,0 +1,2 @@
+insert into organisationunit (operationalstatus, organisationunitcode, organisationunitname,parentid,uuid) values(false, '10576','Namibia',0,'33d8e13a-a107-4ff5-828c-cb7cc692b08e')
+insert into organisationunit (operationalstatus, organisationunitcode, organisationunitname,parentid,uuid) values(false,'10579','!Karas Region',1,'33d8e13a-a107-yy54-828c-cb7cc692b08e')

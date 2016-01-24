@@ -16,4 +16,18 @@ public class HomeController {
 		
 		return "index";
 	}
+	
+	@RequestMapping("/facilitysearch")
+	public String myTemplate(){
+		
+		
+		return "search";
+	}
+	
+	@RequestMapping("/facility")
+	public String facilityManagement(){
+		
+		
+		return "facility";
+	}
 }

@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html ng-app="demoapp" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="" />
+<meta name="author" content="" />
+<!-- <link rel="icon" href="../../favicon.ico"/> -->
+
+<title>Dashboard Template for Bootstrap</title>
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" href="../static/css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+
+<!-- Custom styles for this template -->
+<link rel="stylesheet" href="../static/css/custom/template.css"
+	th:href="@{css/custom/template.css}" />
+<link rel="stylesheet"
+	href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
+<!-- <link rel="stylesheet"
+	href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" /> -->
+<script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
+<script
+	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
+<script
+	src="http://tombatossals.github.io/angular-leaflet-directive/dist/angular-leaflet-directive.min.js"></script>
+
+</head>
+
+<body ng-controller="GeoJSONController">
+	<div th:replace="menu :: menu"></div>
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+				<leaflet lf-center="namibia" geojson="geojson" defaults="defaults"
+					width="100%" height="480px"></leaflet>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- Bootstrap core JavaScript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
+	<script type="
+					text/javascript"
+		src="../static/js/jquery-1.11.3.min.js"
+		th:src="@{js/jquery-1.11.3.min.js}"> </script>
+	<script type="text/javascript" src="../static/js/bootstrap.min.js"
+		th:src="@{js/bootstrap.min.js}"></script>
+	<script type="text/javascript" src="../static/js/mfl-util.js"
+		th:src="@{js/mfl-util.js}"></script>
+	<script type="text/javascript"
+		src="../static/js/custom/organisationUnit.js"
+		th:src="@{js/custom/organisationUnit.js}"></script>
+	<!-- <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script> -->
+	<script type="text/javascript" src="../static/js/custom/mapview.js"
+		th:src="@{js/custom/mapview.js}"></script>
+</body>
+</html>
