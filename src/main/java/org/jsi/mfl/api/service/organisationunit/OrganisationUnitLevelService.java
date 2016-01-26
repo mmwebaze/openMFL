@@ -1,6 +1,7 @@
 package org.jsi.mfl.api.service.organisationunit;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.annotation.Resource;
 
@@ -16,6 +17,7 @@ public class OrganisationUnitLevelService implements OranisationUnitLevel{
 	private OrganisationUnitLevelDAO organisationUnitLevelDAO;
 	
 	public void addOrganisationUnitLevel(OrganisationUnitLevel organisationUnitLevel){
+		organisationUnitLevel.setUuid(UUID.randomUUID().toString());
 		organisationUnitLevelDAO.addOrganisationUnitLevel(organisationUnitLevel);
 	}
 	public List<LevelMapping> getOrganisationUnitLevel(int levelId){

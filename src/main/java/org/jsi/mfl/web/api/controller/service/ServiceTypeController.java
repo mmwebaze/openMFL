@@ -1,5 +1,7 @@
 package org.jsi.mfl.web.api.controller.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.jsi.mfl.api.domain.servicetype.ServiceType;
@@ -15,6 +17,12 @@ public class ServiceTypeController {
 	
 	@Resource
 	private ServiceTypeService serviceTypeService;
+	@RequestMapping(value="/servicemanagement", method=RequestMethod.GET)
+	public String orgUnitServicesManagementView(Model model){
+		List<ServiceType> services = serviceTypeService.getServiceTypes();
+		model.addAttribute("services", services);
+		return "servicemanagement";
+	}
 	
 	@RequestMapping(value="/addService", method=RequestMethod.GET)
 	public String addServiceForm(Model model){
@@ -25,7 +33,6 @@ public class ServiceTypeController {
 	}
 	@RequestMapping(value="/submitService", method=RequestMethod.POST)
 	public String addService(@ModelAttribute ServiceType serviceType){
-		System.out.println("***************** "+serviceType);
 		serviceTypeService.addServiceType(serviceType);
 		return "redirect:/addService";
 	}

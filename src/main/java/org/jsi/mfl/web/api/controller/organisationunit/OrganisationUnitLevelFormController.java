@@ -1,5 +1,7 @@
 package org.jsi.mfl.web.api.controller.organisationunit;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.jsi.mfl.api.domain.organisationunit.OrganisationUnitLevel;
@@ -15,6 +17,13 @@ public class OrganisationUnitLevelFormController {
 
 	@Resource
 	private OrganisationUnitLevelService organisationUnitLevelService;
+	
+	@RequestMapping(value="/levelmanagement", method=RequestMethod.GET)
+	public String orgUnitLevelManagementView(Model model){
+		List<OrganisationUnitLevel> levels = organisationUnitLevelService.getOrganisationUnitLevels();
+		model.addAttribute("levels", levels);
+		return "levelmanagement";
+	}
 	
 	@RequestMapping(value="/addOrgUnitLevel", method=RequestMethod.GET)
 	public String addOrganisationUnitLevelForm(Model model){

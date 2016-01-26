@@ -9,6 +9,13 @@ public class OrganisationUnitWrapper {
 	private String ownerName;
 	private String typeName;
 	private String name;
+	private int parentId;
+	public int getParentId() {
+		return parentId;
+	}
+	public void setParentId(int parentId) {
+		this.parentId = parentId;
+	}
 	public String getName() {
 		return name;
 	}
@@ -29,7 +36,7 @@ public class OrganisationUnitWrapper {
 	}
 	public OrganisationUnitWrapper(int id, String uuid,
 			String organisationUnitName, String organisationUnitCode,
-			Boolean operationalStatus,String ownerName, String typeName, String name) {
+			Boolean operationalStatus,String ownerName, String typeName, String name, int parentId) {
 		super();
 		this.id = id;
 		this.uuid = uuid;
@@ -39,6 +46,7 @@ public class OrganisationUnitWrapper {
 		this.ownerName = ownerName;
 		this.typeName = typeName;
 		this.name = name;
+		this.parentId = parentId;
 	}
 	public int getId() {
 		return id;
@@ -76,6 +84,7 @@ public class OrganisationUnitWrapper {
 				+ ", organisationUnitName=" + organisationUnitName
 				+ ", organisationUnitCode=" + organisationUnitCode
 				+ ", operationalStatus=" + operationalStatus + ", ownerName="
-				+ ownerName + ", typeName=" + typeName + ", name=" + name + "]";
+				+ ownerName + ", typeName=" + typeName + ", name=" + name
+				+ ", parentId=" + parentId + "]";
 	}
 }

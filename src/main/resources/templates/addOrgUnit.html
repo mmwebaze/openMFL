@@ -66,20 +66,6 @@
 							</select>
 						</div>
 					</div>
-					<!-- <div class="form-group">
-						<label for="OrganisationUnitParent" class="control-label col-xs-2">Organistaion
-							Parent</label>
-						<div class="col-xs-10">
-							<input type="text" th:field="*{organisationUnitLevel.level}" class="form-control" id="organisationUnitLevel"
-						placeholder="Organisation Unit Level"/>
-							<select id="organisationUnitParentID" class="chosen-select"
-								th:field="*{idParent}">
-								<option th:each="orgUnit : ${orgUnits}"
-									th:value="${orgUnit.id}"
-									th:text="${orgUnit.organisationUnitName}"></option>
-							</select>
-						</div>
-					</div> -->
 
 					<div class="form-group">
 						<label for="OrganisationUnitType" class="control-label col-xs-2">Facility
@@ -96,7 +82,7 @@
 						<div class="col-xs-10">
 							<input type="text" th:field="*{organisationUnitCode}"
 								class="form-control" name="orgUnitCode"
-								placeholder="Facility Code" required="true" />
+								placeholder="Facility Code" required="true"/>
 						</div>
 					</div>
 					<div class="form-group">

@@ -81,7 +81,8 @@ public class OrganisationUnitFormController {
 	@RequestMapping(value="/editorgunit", method=RequestMethod.GET)
 	public String editOrganisationUnitForm(@RequestParam("uuid") String uuid, Model model){
 		OrganisationUnit orgUnit = organisationUnitService.getOrganisationUnitByUuid(uuid);
-		orgUnit.setIdParent(orgUnit.getParent().getId());
+		System.out.println(orgUnit.getIdParent());
+		//orgUnit.setIdParent(orgUnit.getParent().getId());
 		model.addAttribute("orgUnit", orgUnit);
 		
 		return "editOrgUnit";
@@ -94,7 +95,7 @@ public class OrganisationUnitFormController {
 		return "redirect:/manageOrgUnits";
 	}
 	
-	@RequestMapping(value="/addOrgUnitType", method=RequestMethod.GET)
+/*	@RequestMapping(value="/addOrgUnitType", method=RequestMethod.GET)
 	public String addOrganisationUnitTypeForm(Model model){
 		model.addAttribute("orgUnitType", new OrganisationUnitType());
 		return "addOrgUnitType";
@@ -105,7 +106,7 @@ public class OrganisationUnitFormController {
 		
 		organisationUnitTypeService.addOrganisationUnitType(orgUnitType);
 		return "redirect:/addOrgUnitType";
-	}
+	}*/
 	@RequestMapping(value="/vieworgunit", method=RequestMethod.GET)
 	public String organisationUnitDetail(@RequestParam("uuid") String uuid, Model model){
 		

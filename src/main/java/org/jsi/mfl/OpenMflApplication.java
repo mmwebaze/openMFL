@@ -8,7 +8,7 @@ public class OpenMflApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(OpenMflApplication.class, args);
-		System.out.println("openMFL Starting*****");
+		System.out.println("openMFL Running on port 8080 *****");
 		
 	}
 }
