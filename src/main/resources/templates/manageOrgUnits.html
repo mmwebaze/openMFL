@@ -27,28 +27,36 @@
 <body>
 	<div th:replace="menu :: menu"></div>
 	<div class="container-fluid">
+		<div class="row mfl-row-margin">
+			<div class="col-sm-8 col-sm-offset-2">
+				<h4>
+					<small>Organisation Unit Management</small>
+				</h4>
+			</div>
+		</div>
 		<div class="row">
 			<div th:replace="facility_management :: facility_management"></div>
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-				<div class="row mfl-row-margin">
-					<div class="col-sm-3">
-						<form id="mapViewId" action="/mapview" method="get">
+				<div class="row">
+					<div class="col-sm-2">
+						<form id="mapViewId" action="/mapview" method="post">
+						<input type="text" id ="coordinatesId" name="coordinates" value=""/>
 							<button type="submit" class="btn btn-primary btn-xs"
 								id="viewMapId">View Map</button>
 						</form>
 					</div>
 					<!-- <div class="col-sm-3"></div> -->
-					<div class="col-sm-2 col-sm-offset-7">
+					<div class="col-sm-2 col-sm-offset-10">
 						<form id="addNewId" action="/addOrgUnit" method="get">
 							<button type="submit" class="btn btn-primary btn-xs">Add
 								New</button>
 						</form>
 					</div>
 				</div>
-				<div class="row mfl-row-margin">
+				<div class="row">
 					<div class="col-sm-5">
 						<div class="form-group">
-							<label for="OrganisationUnitLevel" class="control-label col-xs-2">OU Level</label>
+							<label for="OrganisationUnitLevel" class="control-label col-xs-2">Level</label>
 							<div class="col-xs-10">
 								<select id="levelId">
 									<option
@@ -60,9 +68,9 @@
 					</div>
 					<div class="col-sm-5">
 						<div class="form-group">
-							<label for="OrganisationUnitLevel" class="control-label col-xs-2">Level</label>
-							<div class="col-xs-10">
-								<select id="unitId">
+							<label for="OrganisationUnitLevel" class="control-label col-xs-2">Orgnise Unit</label>
+							<div class="col-xs-5" >
+								<select id="unitId" >
 									<option th:each="unit, iterationStatus : ${levelTwoOrgUnits}"
 										th:value="${unit.id}" th:text="${unit.organisationUnitName}"></option>
 								</select>
@@ -70,7 +78,7 @@
 						</div>
 					</div>
 				</div>
-				<div class="row mfl-row-margin">
+				<div class="row">
 
 					<!-- <div class="col-sm-9">
 						<form id="manageOrgUnitsID" class="form-horizontal" action="#"
@@ -99,11 +107,27 @@
 						Map</button>
 				</form> -->
 			</div>
-			<!-- <div class="col-sm-2">
-				<div>
-					<a class="btn btn-info btn-xs" href="/addOrgUnit">Add new</a>
+			<div class="modal fade" id="basicModal" tabindex="-1" role="dialog"
+					aria-labelledby="basicModal" aria-hidden="true">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<!-- <div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal"
+									aria-hidden="true">&amp;times;</button>
+								<h4 class="modal-title" id="myModalLabel">Modal title</h4>
+							</div>
+							<div class="modal-body">
+								<h3>Modal Body</h3>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default"
+									data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-primary">Save
+									changes</button>
+							</div> -->
+						</div>
+					</div>
 				</div>
-			</div> -->
 
 		</div>
 		<div class="row">
@@ -116,18 +140,21 @@
 							<td th:text="${unit.organisationUnitCode}"></td>
 							<td th:text="${unit.organisationUnitName}"></td>
 							<td th:text="${unit.ownerName}"></td>
+							<td><a class ="btn btn-success btn-xs" th:href="@{/vieworgunit(uuid=${unit.uuid})}">Details</a></td>
 						</tr>
 					</table>
 				</div>
+				
 			</div>
 		</div>
 	</div>
 
-	<!-- Bootstrap core JavaScript
+	<!-- Bootstrap & JQuery core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script type="text/javascript" src="../static/js/jquery-1.11.3.min.js"
 		th:src="@{js/jquery-1.11.3.min.js}"></script>
+		<script type="text/javascript" src="../static/js/jquery.cookie.js" th:src="@{js/jquery.cookie.js}"></script>
 	<script type="text/javascript" src="../static/js/bootstrap.min.js"
 		th:src="@{js/bootstrap.min.js}"></script>
 	<script type="text/javascript" src="../static/js/chosen.jquery.min.js"

@@ -157,7 +157,7 @@ public class OrganisationUnit {
 		this.users = users;
 	}
 
-	@OneToMany
+	@OneToMany(mappedBy="parent", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
 	private Set<OrganisationUnit> organisationUnitChildren;
 	
 	public Set<OrganisationUnit> getOrganisationUnitChildren() {
@@ -179,6 +179,15 @@ public class OrganisationUnit {
 		this.organisationUnitName = organisationUnitName;
 		this.organisationUnitCode = organisationUnitCode;
 		this.operationalStatus = operationalStatus;
+		this.ownerName = ownerName;
+	}
+	public OrganisationUnit(int id, String uuid, String organisationUnitName, String organisationUnitCode, Boolean operationalStatus, String geoJson, String ownerName){
+		this.id = id;
+		this.uuid = uuid;
+		this.organisationUnitName = organisationUnitName;
+		this.organisationUnitCode = organisationUnitCode;
+		this.operationalStatus = operationalStatus;
+		this.geoJson = geoJson;
 		this.ownerName = ownerName;
 	}
 	public int getId() {

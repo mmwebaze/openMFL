@@ -21,13 +21,7 @@
 	th:href="@{css/custom/template.css}" />
 <link rel="stylesheet"
 	href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
-<!-- <link rel="stylesheet"
-	href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" /> -->
-<script src="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.min.js"></script>
-<script
-	src="http://tombatossals.github.io/angular-leaflet-directive/dist/angular-leaflet-directive.min.js"></script>
+
 
 </head>
 
@@ -35,10 +29,10 @@
 	<div th:replace="menu :: menu"></div>
 	<div class="container-fluid">
 		<div class="row">
+		<input type="text" id="coordinatesId" th:value="${coordinates}" />
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
-				<leaflet lf-center="namibia" geojson="geojson" defaults="defaults"
-					width="100%" height="480px"></leaflet>
+				<leaflet center="namibia" geojson="geojson" defaults="defaults" width="100%" height="480px"></leaflet>
 
 			</div>
 		</div>
@@ -53,12 +47,12 @@
 		th:src="@{js/jquery-1.11.3.min.js}"> </script>
 	<script type="text/javascript" src="../static/js/bootstrap.min.js"
 		th:src="@{js/bootstrap.min.js}"></script>
-	<script type="text/javascript" src="../static/js/mfl-util.js"
-		th:src="@{js/mfl-util.js}"></script>
-	<script type="text/javascript"
-		src="../static/js/custom/organisationUnit.js"
-		th:src="@{js/custom/organisationUnit.js}"></script>
-	<!-- <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script> -->
+	<script type="text/javascript" src="../static/js/angular.min.js"
+		th:src="@{js/angular.min.js}"></script>
+	<script
+		src="../static/js/angular-leaflet-directive.min.js" th:src="@{js/angular-leaflet-directive.min.js}"></script>
+			<script
+		src="../static/js/leaflet.js" th:src="@{js/leaflet.js}"></script>
 	<script type="text/javascript" src="../static/js/custom/mapview.js"
 		th:src="@{js/custom/mapview.js}"></script>
 </body>

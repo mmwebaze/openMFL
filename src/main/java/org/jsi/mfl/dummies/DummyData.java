@@ -50,11 +50,15 @@ public class DummyData {
 	public static List<OrganisationUnit> getOrgUnits(){
 		
 		List<OrganisationUnit> orgUnitList = new ArrayList<>();
+		
+		/*OrganisationUnit unit = new OrganisationUnit();
+		unit.setId(0);*/
 				
 		OrganisationUnit namibia = new OrganisationUnit();
 		namibia.setOrganisationUnitName("Namibia");
 		namibia.setOrganisationUnitCode("10576");
 		namibia.setOrganisationUnitLevel(new OrganisationUnitLevel(1));
+		//namibia.setParent(namibia);
 		orgUnitList.add(namibia);
 
 		OrganisationUnit karasRegion = new OrganisationUnit();

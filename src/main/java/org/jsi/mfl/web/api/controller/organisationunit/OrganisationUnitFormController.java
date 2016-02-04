@@ -95,18 +95,6 @@ public class OrganisationUnitFormController {
 		return "redirect:/manageOrgUnits";
 	}
 	
-/*	@RequestMapping(value="/addOrgUnitType", method=RequestMethod.GET)
-	public String addOrganisationUnitTypeForm(Model model){
-		model.addAttribute("orgUnitType", new OrganisationUnitType());
-		return "addOrgUnitType";
-	}
-	@RequestMapping(value="/submitOrgUnitType", method=RequestMethod.POST)
-	public String addOrganisationUnitType(@ModelAttribute(value="orgUnitType") @Valid OrganisationUnitType orgUnitType){
-		System.out.println(orgUnitType);
-		
-		organisationUnitTypeService.addOrganisationUnitType(orgUnitType);
-		return "redirect:/addOrgUnitType";
-	}*/
 	@RequestMapping(value="/vieworgunit", method=RequestMethod.GET)
 	public String organisationUnitDetail(@RequestParam("uuid") String uuid, Model model){
 		

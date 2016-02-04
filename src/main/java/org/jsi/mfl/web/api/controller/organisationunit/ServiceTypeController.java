@@ -1,4 +1,4 @@
-package org.jsi.mfl.web.api.controller.service;
+package org.jsi.mfl.web.api.controller.organisationunit;
 
 import java.util.List;
 

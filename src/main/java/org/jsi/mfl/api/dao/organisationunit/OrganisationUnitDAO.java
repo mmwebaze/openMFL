@@ -14,5 +14,6 @@ public interface OrganisationUnitDAO {
 	public OrganisationUnit getOrganisationUnitByUuid(String uuid);
 	public void addOrganistionUnitInitial(OrganisationUnit organisationUnit);
 	public List<OrganisationUnit> getOrganisationUnitChild();
-	public List<OrganisationUnit> searchForOrganisationUnits(String searchTerm);
+	public List<OrganisationUnit> searchForOrganisationUnits(String searchTerm, String searchQuery, int orgUnitTypeId);
+	public String getOrganisationUnitGeojsonById(int id);
 }

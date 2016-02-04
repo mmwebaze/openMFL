@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html ng-app="demoapp" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="utf-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -9,6 +9,8 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <!-- <link rel="icon" href="../../favicon.ico"/> -->
+<link rel="stylesheet"
+	href="http://cdn.leafletjs.com/leaflet-0.7.1/leaflet.css" />
 
 <title>Dashboard Template for Bootstrap</title>
 
@@ -22,13 +24,14 @@
 <link rel="stylesheet" href="../static/css/custom/template.css"
 	th:href="@{css/custom/template.css}" />
 
+
 </head>
 
 <body>
-	<div th:replace="menu :: menu"></div>
+	<!-- <div th:replace="menu :: menu"></div> -->
 	<div class="container-fluid">
 		<div class="row">
-			<div th:replace="menu3 :: menu3"></div>
+			<!-- <div th:replace="menu3 :: menu3"></div> -->
 			<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 
 				<div class="form-group">
@@ -55,6 +58,12 @@
 								<td>Facility Status</td>
 								<td><span th:text="${orgUnit.operationalStatus}" /></td>
 							</tr>
+							<tr>
+								<td>Uuid</td>
+								<td><span th:text="${orgUnit.uuid}" />
+								<input type="hidden" id ="uuid" th:value="${orgUnit.uuid}" class="form-control"/>
+								</td>
+							</tr>
 						</table>
 
 					</div>
@@ -68,7 +77,8 @@
 								<th colspan="2">Services</th>
 							</tr>
 
-							<tr th:each="orgUnitService,iterationStatus : ${orgUnit.orgUnitServices}">
+							<tr
+								th:each="orgUnitService,iterationStatus : ${orgUnit.orgUnitServices}">
 								<td th:text="${iterationStatus.count}"></td>
 								<td th:text="${orgUnitService.name}"></td>
 							</tr>
@@ -76,6 +86,20 @@
 					</div>
 				</div>
 				<!-- </form> -->
+			</div>
+		</div>
+		<div class="row" ng-controller="GeoJSONController">
+				<div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+
+					<leaflet center="namibia" geojson="geojson" defaults="defaults"
+						width="60%" height="400px"></leaflet>
+
+			</div>
+
+		</div>
+		<div class="row">
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
 			</div>
 		</div>
 	</div>
@@ -87,13 +111,18 @@
 		th:src="@{js/jquery-1.11.3.min.js}"></script>
 	<script type="text/javascript" src="../static/js/bootstrap.min.js"
 		th:src="@{js/bootstrap.min.js}"></script>
-	<script type="text/javascript" src="../static/js/chosen.jquery.min.js"
-		th:src="@{js/chosen.jquery.min.js}"></script>
-	<script type="text/javascript" src="../static/js/mfl-util.js"
-		th:src="@{js/mfl-util.js}"></script>
-
+	<!-- <script type="text/javascript" src="../static/js/mfl-util.js"
+		th:src="@{js/mfl-util.js}"></script> -->
+		<script type="text/javascript" src="../static/js/angular.min.js"
+		th:src="@{js/angular.min.js}"></script>
+	<script
+		src="../static/js/angular-leaflet-directive.min.js" th:src="@{js/angular-leaflet-directive.min.js}"></script>
+			<script
+		src="../static/js/leaflet.js" th:src="@{js/leaflet.js}"></script>
 	<script type="text/javascript"
 		src="../static/js/custom/organisationUnit.js"
 		th:src="@{js/custom/organisationUnit.js}"></script>
+	<script type="text/javascript" src="../static/js/custom/mapview.js"
+		th:src="@{js/custom/mapview.js}"></script>
 </body>
 </html>

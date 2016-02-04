@@ -1,5 +1,7 @@
 package org.jsi.mfl.api.service.organisationunit;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.annotation.Resource;
@@ -7,6 +9,7 @@ import javax.annotation.Resource;
 import org.jsi.mfl.api.dao.organisationunit.OrganisationUnitDAO;
 import org.jsi.mfl.api.domain.organisationunit.OrganisationUnit;
 import org.jsi.mfl.api.domain.organisationunit.OrganisationUnitLevel;
+import org.jsi.mfl.util.QueryUtil;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -46,9 +49,26 @@ public class OrganisationUnitService {
 	public List<OrganisationUnit> getOrganisationUnitChild(){
 		return organisationUnitDao.getOrganisationUnitChild();	
 	}
-	public List<OrganisationUnit> searchForOrganisationUnits(String searchTerm){
+	public List<OrganisationUnit> searchForOrganisationUnits(String searchTerm, boolean exclude, int orgUnitTypeId){
 		String search = searchTerm+"%";
-		//System.out.println("Search term is: "+search);
-		return organisationUnitDao.searchForOrganisationUnits(search);
+		return organisationUnitDao.searchForOrganisationUnits(search, QueryUtil.searchQuery(exclude, orgUnitTypeId), orgUnitTypeId);
+	}
+	public List<String> getOrganisationUnitGeojsonById(String ids){
+		List<String> geoJsons = new ArrayList<String>();
+		List<String> items = Arrays.asList(ids.split("\\s*,\\s*"));
+		for (String s : items){
+			int id = Integer.parseInt(s);
+			System.out.println(id);
+			String geoJson = organisationUnitDao.getOrganisationUnitGeojsonById(id);
+			if (geoJson != null){
+				geoJsons.add(organisationUnitDao.getOrganisationUnitGeojsonById(id));
+				//geoJsons.add(",");
+			}
+		}
+		/*int numberGeoJsons = geoJsons.size();
+		if (numberGeoJsons > 0)
+			geoJsons.remove(numberGeoJsons - 1);*/
+
+		return geoJsons;
 	}
 }

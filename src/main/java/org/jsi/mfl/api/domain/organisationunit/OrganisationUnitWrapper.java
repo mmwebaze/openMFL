@@ -6,6 +6,7 @@ public class OrganisationUnitWrapper {
 	private String organisationUnitName;
 	private String organisationUnitCode;
 	private Boolean operationalStatus;
+	private String geoJson;
 	private String ownerName;
 	private String typeName;
 	private String name;
@@ -36,17 +37,24 @@ public class OrganisationUnitWrapper {
 	}
 	public OrganisationUnitWrapper(int id, String uuid,
 			String organisationUnitName, String organisationUnitCode,
-			Boolean operationalStatus,String ownerName, String typeName, String name, int parentId) {
+			Boolean operationalStatus, String geoJson, String ownerName, String typeName, String name, int parentId) {
 		super();
 		this.id = id;
 		this.uuid = uuid;
 		this.organisationUnitName = organisationUnitName;
 		this.organisationUnitCode = organisationUnitCode;
 		this.operationalStatus = operationalStatus;
+		this.geoJson = geoJson;
 		this.ownerName = ownerName;
 		this.typeName = typeName;
 		this.name = name;
 		this.parentId = parentId;
+	}
+	public String getGeoJson() {
+		return geoJson;
+	}
+	public void setGeoJson(String geoJson) {
+		this.geoJson = geoJson;
 	}
 	public int getId() {
 		return id;

@@ -104,10 +104,10 @@ public class OrganisationUnitWebServices {
 
 		return organisationUnitService.getOrganisationUnitByUuid(uuid).getGeoJson();
 	}
-	@RequestMapping(value="/api/search/{searchTerm}", method=RequestMethod.POST)
-	public List<OrganisationUnit> searchOrganisationUnit(@PathVariable String searchTerm){
+	@RequestMapping(value="/api/search", method=RequestMethod.POST)
+	public List<OrganisationUnit> searchOrganisationUnit(String searchTerm, boolean exclude, Integer orgUnitTypeId){
 		
-		List<OrganisationUnit> soughtOrgUnits = organisationUnitService.searchForOrganisationUnits(searchTerm);
+		List<OrganisationUnit> soughtOrgUnits = organisationUnitService.searchForOrganisationUnits(searchTerm, exclude, orgUnitTypeId);
 		
 		return soughtOrgUnits;
 	}
